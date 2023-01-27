@@ -1,0 +1,15 @@
+{
+  "name": "@finsweet/webflow-native-example",
+  "private": true,
+  "description": "Example using webflow-native.",
+  "type": "module",
+  "scripts": {
+    "build": "webflow-native build ./src/index.ts",
+    "publish": "webflow-native publish ./src/index.ts",
+    "lint": "eslint ./src && prettier --check ./src",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@finsweet/webflow-native": "workspace:*"
+  }
+}

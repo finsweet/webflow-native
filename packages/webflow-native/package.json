@@ -1,0 +1,27 @@
+{
+  "name": "webflow-native",
+  "version": "0.0.0",
+  "description": "Generate schemas for Webflow Natve and publish them.",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "bin": {
+    "webflow-native": "bin.js"
+  },
+  "files": [
+    "dist",
+    "bin.js"
+  ],
+  "scripts": {
+    "build": "node ./build/index.js",
+    "lint": "eslint ./src && prettier --check ./src",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.4"
+  },
+  "dependencies": {
+    "zod": "^3.20.2"
+  }
+}
