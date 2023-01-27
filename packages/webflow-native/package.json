@@ -1,6 +1,6 @@
 {
   "name": "webflow-native",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Generate schemas for Webflow Natve and publish them.",
   "license": "MIT",
   "type": "module",

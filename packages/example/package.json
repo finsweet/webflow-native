@@ -1,5 +1,5 @@
 {
-  "name": "@finsweet/webflow-native-example",
+  "name": "webflow-native-example",
   "private": true,
   "description": "Example using webflow-native.",
   "type": "module",
@@ -10,6 +10,6 @@
     "check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@finsweet/webflow-native": "workspace:*"
+    "webflow-native": "workspace:*"
   }
 }
