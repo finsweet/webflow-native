@@ -6,7 +6,9 @@ This is a prototype that attempts to validate a development tool for creating "A
 
 As exposed in the presentation, the new "Attributes inside Designer" UI would allow users to define HTML attributes to elements in a visual way throgh the Settings panel in the Webflow Designer.
 
-![Attributes inside Designer demo](https://uploads-ssl.webflow.com/63d40e2bc30a00e32085d4ec/63d454d0e1d279de329eb015_attributes-demo.png)
+<div align="center" dir="auto">
+<img src="https://uploads-ssl.webflow.com/63d40e2bc30a00e32085d4ec/63d454d0e1d279de329eb015_attributes-demo.png" alt="Attributes inside Designer demo" width="512" style="max-width: 100%;">
+</div>
 
 Under the hood, when the users select options inside this new Settings UI, Webflow would apply HTML attributes to the elements just like the native components like Slider and Tabs already do.
 
