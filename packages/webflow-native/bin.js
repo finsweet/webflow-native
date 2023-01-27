@@ -6,7 +6,7 @@ import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { setTimeout } from 'timers/promises';
 
-import { schema } from './index.js';
+import { schema } from './dist/index.js';
 
 const argv = process.argv.slice(2);
 

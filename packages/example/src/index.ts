@@ -1,4 +1,4 @@
-import type { Schema } from '@finsweet/webflow-native';
+import type { Schema } from 'webflow-native';
 
 const schema: Schema = {
   id: 'fs-attributes',
