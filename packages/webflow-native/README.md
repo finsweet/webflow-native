@@ -31,7 +31,7 @@ The schema approach is universal and does not require any specific development b
 This repository contains
 
 1. [A schema proposal to use to create the integrated UIs in Webflow.](#schema-proposal)
-2. A tool to validate and publish those schemas to Webflow.
+2. [A tool to validate and publish those schemas to Webflow.](#validation-and-deployments-tool)
 
 To create new integrations, developers would create a schema that defines the relationship between the UI elements under the Settings panel and the applied HTML attributes.
 
