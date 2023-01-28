@@ -144,7 +144,7 @@ type SolutionAttributesGroup = {
   conditions?: SolutionCondition[];
 };
 
-type SolutionAttribute = {
+type SolutionAttribute = SolutionAttributeInput & {
   /**
    * Defines that it's a setting for an HTML attribute.
    */
@@ -189,7 +189,7 @@ type SolutionAttribute = {
    * @example "fs-cmsload-element"
    */
   attributeName: string;
-} & SolutionAttributeInput;
+};
 
 type SolutionAttributeInput =
   | {
@@ -284,6 +284,120 @@ type SolutionSettingOption = {
    */
   attributeValue: string;
 };
+
+type SolutionCondition =
+  | {
+      /**
+       * Defines the type as a single condition.
+       */
+      type: 'condition';
+
+      /**
+       * Defines the {@link SolutionAttribute.id} who's value will be assessed.
+       */
+      attributeId: string;
+
+      /**
+       * Defines the value that must match the Attribute setting to fulfill the condition.
+       * This is helpful when a setting can only be applied if another attribute has been already added to the element.
+       * Example: `fs-cmsload-mode` can only be applied to those elements that have a `[fs-cmsload-element="list"]` attribute.
+       */
+      attributeValue: string | number;
+    }
+  | {
+      /**
+       * Defines the type as a group of conditions.
+       */
+      type: 'group';
+
+      /**
+       * Defines the conditions operator.
+       */
+      operator: 'or' | 'and';
+
+      /**
+       * Defines all conditions that must be fulfilled using the operator.
+       */
+      conditions: SolutionCondition[];
+    };
+
+/**
+ * Defines Webflow's internal node types.
+ */
+type NodeType =
+  | 'BackgroundVideoWrapper'
+  | 'Block'
+  | 'Blockquote'
+  | 'Body'
+  | 'FormCheckboxWrapper'
+  | 'FormCheckboxInput'
+  | 'Container'
+  | 'Column'
+  | 'CommerceCartWrapper'
+  | 'CommerceCartOpenLink'
+  | 'CommerceCartOpenLinkIcon'
+  | 'DropdownLink'
+  | 'DropdownList'
+  | 'DropdownToggle'
+  | 'DropdownWrapper'
+  | 'DynamoEmpty'
+  | 'DynamoItem'
+  | 'DynamoList'
+  | 'DynamoWrapper'
+  | 'Facebook'
+  | 'Grid'
+  | 'HtmlEmbed'
+  | 'Heading'
+  | 'Icon'
+  | 'Image'
+  | 'FormTextInput'
+  | 'FormWrapper'
+  | 'FormForm'
+  | 'FormInlineLabel'
+  | 'FormSuccessMessage'
+  | 'FormErrorMessage'
+  | 'FormBlockLabel'
+  | 'LineBreak'
+  | 'Link'
+  | 'List'
+  | 'ListItem'
+  | 'LightboxWrapper'
+  | 'MapWidget'
+  | 'NavbarWrapper'
+  | 'NavbarContainer'
+  | 'NavbarBrand'
+  | 'NavbarMenu'
+  | 'NavbarLink'
+  | 'NavbarButton'
+  | 'Paragraph'
+  | 'FormRadioWrapper'
+  | 'FormRadioInput'
+  | 'FormReCaptcha'
+  | 'RichText'
+  | 'Row'
+  | 'FormSelect'
+  | 'SearchButton'
+  | 'SearchForm'
+  | 'SearchInput'
+  | 'Span'
+  | 'Strong'
+  | 'Symbol'
+  | 'Section'
+  | 'FormButton'
+  | 'SliderWrapper'
+  | 'SliderMask'
+  | 'SliderSlide'
+  | 'SliderArrow'
+  | 'SliderNav'
+  | 'TabsWrapper'
+  | 'TabsMenu'
+  | 'TabsLink'
+  | 'TabsContent'
+  | 'TabsPane'
+  | 'FormTextarea'
+  | 'Twitter'
+  | 'Video'
+  | 'YouTubeVideo';
 ```
 
 ## Install
