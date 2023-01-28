@@ -6,6 +6,7 @@ Webflow Native is a schema proposal that attempts to validate a development tool
 
 Developers can write custom solutions and access those solutions inside Webflow Designer Settings panel.
 This will allow third-parties to build native-like Webflow integrations directly inside Webflow.
+
 When users select options inside this new Settings UI, Webflow would apply HTML attributes to the elements. This is the same concept as native Webflow components, like Slider and Tabs.
 
 <div align="center" dir="auto">
@@ -48,6 +49,7 @@ type Schema = {
   /**
    * Defines the integration name.
    * This name would appear in the elements Settings panel.
+   * @example "Finsweet Attributes"
    */
   name: string;
 
@@ -67,6 +69,7 @@ type Solution = {
   /**
    * Defines the solution name.
    * This name would appear in the `Solution` dropdown.
+   * @example "CMS Load"
    */
   name: string;
 
@@ -78,8 +81,9 @@ type Solution = {
 
   /**
    * Defines the available HTML attributes that will be displayed as options in the UI.
+   * Attributes can either be a single setting or a group of settings.
    */
-  attributes: SolutionAttribute[];
+  attributes: (SolutionAttributesGroup | SolutionAttribute)[];
 };
 
 type SolutionScript = {
@@ -106,8 +110,114 @@ type SolutionScript = {
   /**
    * Defines the placement of the script.
    */
-  location: string;
+  location: 'head' | 'body';
 };
+
+type SolutionAttributesGroup = {
+  /**
+   * Defines that it's a group of settings.
+   */
+  type: 'group';
+
+  /**
+   * The group name.
+   * @example "List settings"
+   */
+  name: string;
+
+  /**
+   * The settings under this group.
+   */
+  attributes: SolutionAttribute[];
+
+  /**
+   * The node types where this group can be applied.
+   * Options will just appear under the Settings panel of the elements that match any of these nodes.
+   * Uses Webflow's internal naming of node types.
+   * @example ["DynamoList", "DynamoWrapper"]
+   */
+  nodeTypes?: NodeType[];
+
+  /**
+   * The conditions that must be fulfilled to display this group of settings in the Settings panel.
+   */
+  conditions?: SolutionCondition[];
+};
+
+type SolutionAttribute = {
+  /**
+   * Defines that it's a setting for an HTML attribute.
+   */
+  type: 'attribute';
+
+  /**
+   * Defines the setting ID.
+   */
+  id: string;
+
+  /**
+   * Defines the setting name.
+   * @example "Element"
+   */
+  name: string;
+
+  /**
+   * A description that the UI can display the user if he/she needs more information.
+   */
+  description: string;
+
+  /**
+   * The node types where this setting can be applied.
+   * Options will just appear under the Settings panel of the elements that match any of these nodes.
+   * Uses Webflow's internal naming of node types.
+   * @example ["DynamoList", "DynamoWrapper"]
+   */
+  nodeTypes?: NodeType[];
+
+  /**
+   * Defines if it's a required setting.
+   */
+  required?: boolean;
+
+  /**
+   * The conditions that must be fulfilled to display this setting in the Settings panel.
+   */
+  conditions?: SolutionCondition[];
+
+  /**
+   * The HTML attribute name that would be applied to the element when defining this setting in Webflow.
+   * @example "fs-cmsload-element"
+   */
+  attributeName: string;
+} & SolutionAttributeInput;
+
+type SolutionAttributeInput =
+  | {
+      /**
+       * Defines a checkbox type.
+       * The UI in the Settings panel would render this option as a checkbox.
+       * If the user checkes the checkbox, Webflow would apply a boolean HTML attribute to the element.
+       * @example "[fs-cmsload-element]"
+       */
+      optionsType: 'checkbox';
+    }
+  | {
+      optionsType: 'dropdown';
+      attributeValue?: string;
+      options: SolutionSettingOption[];
+    }
+  | {
+      optionsType: 'text-input';
+      attributeValue?: string;
+    }
+  | {
+      optionsType: 'integer-input';
+      attributeValue?: number;
+    }
+  | {
+      optionsType: 'float-input';
+      attributeValue?: number;
+    };
 ```
 
 ## Install
