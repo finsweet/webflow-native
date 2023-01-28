@@ -194,30 +194,80 @@ type SolutionAttribute = {
 type SolutionAttributeInput =
   | {
       /**
-       * Defines a checkbox type.
-       * The UI in the Settings panel would render this option as a checkbox.
-       * If the user checkes the checkbox, Webflow would apply a boolean HTML attribute to the element.
-       * @example "[fs-cmsload-element]"
+       * Defines the setting as a checkbox type.
+       * The UI in the Settings panel would render this setting as a checkbox.
+       * If the user checkes the checkbox, Webflow would apply a boolean HTML attribute to the element using the {@link SolutionAttribute.attributeName} field.
+       * @example "[fs-cmsload-resetix]"
        */
       optionsType: 'checkbox';
     }
   | {
+      /**
+       * Defines the setting as a dropdown type.
+       * The UI in the Settings panel would render this setting as a dropdown.
+       * If the user selects an option from the dropdown, Webflow would use it as the HTML attribute value.
+       * @example "[fs-cmsload-element="list"]"
+       */
       optionsType: 'dropdown';
+
+      /**
+       * Defines a default value.
+       */
       attributeValue?: string;
+
+      /**
+       * Defines the list of options in the dropdown.
+       */
       options: SolutionSettingOption[];
     }
   | {
+      /**
+       * Defines the setting as a text input type.
+       * The UI in the Settings panel would render this setting as a text input.
+       * If the user inputs a value in the field, Webflow would use it as the HTML attribute value.
+       * @example "[fs-cmsnest-collection="my-collection"]"
+       */
       optionsType: 'text-input';
       attributeValue?: string;
     }
   | {
+      /**
+       * Defines the setting as a numeric integer type.
+       * The UI in the Settings panel would render this setting as a number input, only allowing integers.
+       * If the user inputs a value in the field, Webflow would use it as the HTML attribute value.
+       * @example "[fs-cmsload-duration="500"]"
+       */
       optionsType: 'integer-input';
       attributeValue?: number;
     }
   | {
+      /**
+       * Defines the setting as a numeric float type.
+       * The UI in the Settings panel would render this setting as a number input, allowing floats.
+       * If the user inputs a value in the field, Webflow would use it as the HTML attribute value.
+       * @example "[fs-cmsload-threshold="25.5"]"
+       */
       optionsType: 'float-input';
       attributeValue?: number;
     };
+
+type SolutionSettingOption = {
+  /**
+   * Defines the option name.
+   * @example "Ease-out"
+   */
+  name: string;
+
+  /**
+   * A description that the UI can display the user if he/she needs more information.
+   */
+  description: string;
+
+  /**
+   * Defines the value that would be applied to the HTML attribute when selecting this option.
+   */
+  attributeValue: string;
+};
 ```
 
 ## Install
