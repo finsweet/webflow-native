@@ -212,6 +212,7 @@ type SolutionAttributeInput =
 
       /**
        * Defines a default value.
+       * The UI would display this value pre-selected.
        */
       attributeValue?: string;
 
@@ -228,6 +229,11 @@ type SolutionAttributeInput =
        * @example "[fs-cmsnest-collection="my-collection"]"
        */
       optionsType: 'text-input';
+
+      /**
+       * Defines a default value.
+       * The UI would display this value pre-populated.
+       */
       attributeValue?: string;
     }
   | {
@@ -238,6 +244,11 @@ type SolutionAttributeInput =
        * @example "[fs-cmsload-duration="500"]"
        */
       optionsType: 'integer-input';
+
+      /**
+       * Defines a default value.
+       * The UI would display this value pre-populated.
+       */
       attributeValue?: number;
     }
   | {
@@ -248,6 +259,11 @@ type SolutionAttributeInput =
        * @example "[fs-cmsload-threshold="25.5"]"
        */
       optionsType: 'float-input';
+
+      /**
+       * Defines a default value.
+       * The UI would display this value pre-populated.
+       */
       attributeValue?: number;
     };
 
