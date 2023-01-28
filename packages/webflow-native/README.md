@@ -18,8 +18,8 @@ Under the hood, when the users select options inside this new Settings UI, Webfl
 Example workflow:
 
 1. Select an element.
-2. Go to the Settings panel, under the Finsweet Attributes accordion.
-3. Open the Finsweet Attributes accordion.
+2. Open the Settings panel.
+3. Open the `Finsweet Attributes` accordion.
 4. Select `Solution = CMS Load` and `Element = List`.
 
 This workflow would apply `fs-cmsload-element="list"` HTML attribute to the element.
