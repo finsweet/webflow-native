@@ -39,6 +39,10 @@ This schema would then be sent to Webflow to include it in the Designer as a new
 
 ## Schema proposal
 
+You can see an example of a real schema in `packages/example`, or you can visit an [Interactive Playground in Stackblitz](https://stackblitz.com/edit/webflow-native?file=README.md).
+
+The example represents how would the Settings in the previous picture be defined through this schema proposal.
+
 ```typescript
 type Schema = {
   /**
