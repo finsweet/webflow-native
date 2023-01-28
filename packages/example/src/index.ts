@@ -39,16 +39,6 @@ const schema: Schema = {
           ],
         },
         {
-          type: 'attribute',
-          id: 'instance',
-          name: 'Element',
-          description: 'Defines the type of element.',
-          attributeName: 'fs-cmsload-instance',
-          nodeTypes: ['DynamoList'],
-          attributeValue: 1,
-          optionsType: 'integer-input',
-        },
-        {
           type: 'group',
           name: 'List settings',
           nodeTypes: ['DynamoList'],
