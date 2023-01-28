@@ -30,7 +30,7 @@ The schema approach is universal and does not require any specific development b
 
 This repository contains
 
-1. A schema proposal to use to create the integrated UIs in Webflow.
+1. [A schema proposal to use to create the integrated UIs in Webflow.](#schema-proposal)
 2. A tool to validate and publish those schemas to Webflow.
 
 To create new integrations, developers would create a schema that defines the relationship between the UI elements under the Settings panel and the applied HTML attributes.
@@ -404,7 +404,19 @@ type NodeType =
   | 'YouTubeVideo';
 ```
 
-## Install
+## Validation and deployments tool
+
+`webflow-native` is a real npm package that has been created and deployed specifically for this proposal.
+
+It is a tool that would allow developers to create their own solutions via a type-safe schema, and validate it before sending it to Webflow.
+
+Validation uses [zod](https://github.com/colinhacks/zod) under the hood to ensure the data follows the correct schema.
+
+Publishing is currently just a simple mock that represents the idea. We assume that this part would have to be discussed thoroughly to decide the best approach.
+
+Ideally, developers would be able to add a publish step in their CI/CD workflows. But as a early MVP, other methods like manually sending a `.json` file to Webflow would be more than enough.
+
+### Install
 
 ```bash
 # install as project dependency
@@ -414,19 +426,15 @@ $ npm install --save-dev webflow-native
 $ npm install --global webflow-native
 ```
 
-## Usage
+### Usage
 
 You can see an example of usage in `packages/example`, or you can visit an [Interactive Playground in Stackblitz](https://stackblitz.com/edit/webflow-native?file=README.md).
-
-Index:
-
-1. Schema definition
 
 ```bash
 # validates and builds a schema
 # "src/index.ts" would be the entry file that default-exports the schema
 $ webflow-native build src/index.ts
 
-# validates, builds and publishes a schema to Webflow
+# validates, builds and publishes (mock) a schema to Webflow
 $ webflow-native publish src/index.ts
 ```
