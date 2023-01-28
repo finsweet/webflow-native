@@ -11,4 +11,13 @@ await esbuild.build({
   target: 'esnext',
 });
 
+await esbuild.build({
+  bundle: true,
+  entryPoints: ['src/bin.ts'],
+  outdir: 'dist',
+  platform: 'node',
+  format: 'esm',
+  external: ['esbuild'],
+});
+
 exec(`tsc --emitDeclarationOnly --declaration`);

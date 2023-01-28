@@ -7,7 +7,7 @@ import { join } from 'path';
 import sade from 'sade';
 import { setTimeout } from 'timers/promises';
 
-import { schema } from './dist/index.js';
+import { schema } from './index';
 
 const prog = sade('webflow-native');
 
@@ -32,9 +32,9 @@ prog.parse(process.argv);
 
 /**
  * Extracts the default export from the source, validates it using zod and writes it into a `schema.json` file.
- * @param {string} src
+ * @param src
  */
-async function validate_and_build(src) {
+async function validate_and_build(src: string) {
   const result = await esbuild.build({ entryPoints: [src], write: false });
 
   const module = await import(
@@ -56,9 +56,9 @@ async function validate_and_build(src) {
 
 /**
  * Mocks a publish action to Webflow.
- * @param {string} version
+ * @param version
  */
-async function publish(version) {
+async function publish(version: string) {
   console.log('Publishing to Webflow... ⌛');
 
   await setTimeout(1000);
